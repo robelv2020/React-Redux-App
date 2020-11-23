@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React from 'react'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import { appReducer as reducer } from './reducers/appReducer'
+import thunk from 'redux-thunk'
 import './App.css';
+
+import RecipeForm from './components/RecipeForm'
+import RecipeList from './components/RecipeList'
+
+const store = createStore(reducer, applyMiddleware(thunk))
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Provider store={store}>
+        <h2>Recipes</h2>
+        <RecipeForm />
+        <RecipeList />
+      </Provider>
     </div>
   );
 }

@@ -5,7 +5,7 @@ export const initalState = {
   isGettingData: false
 }
 
-export const reducer = (state = initalState, action) => {
+export const appReducer = (state = initalState, action) => {
   switch (action.type) {
     case GET_DATA:
       return {
